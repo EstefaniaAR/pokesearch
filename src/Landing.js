@@ -1,15 +1,17 @@
 import React from 'react'
-import {View,Text,ImageBackground} from 'react-native'
+import {View,Text,ImageBackground,Dimensions} from 'react-native'
 import {Button} from 'native-base'
 
 var myBackground = require('../assets/landing.jpg')
+var height = Dimensions.get('window').height
+var width = Dimensions.get('window').width
 
 class Landing extends React.Component{
 	render()
 	{
 		return(
 			<View>
-				<ImageBackground source = {myBackground} style={{width: '100%', height: '100%'}}>
+				<ImageBackground source = {myBackground} style={styles.backgroundImage}>
       
 			        <View style ={styles.viewStyle}>
 			          <Text
@@ -18,7 +20,7 @@ class Landing extends React.Component{
 			          <Button
 			          block={true}
 			          style={styles.buttonStyle}
-			          onPress={()=>this.props.switchScreen("screen")}>
+			          onPress={()=>this.props.switchScreen("search")}>
 			          <Text style ={styles.buttonText}>Start Searching</Text>
 			          </Button>
 			        </View>
@@ -46,7 +48,13 @@ const styles = {
   },
   buttonText:{
     color: 'white'
-  }
+  },
+  backgroundImage:{
+		flex:1
+		,resizeMode: 'cover'
+		,height: height
+		,width: width
+	}
 
 };
 
